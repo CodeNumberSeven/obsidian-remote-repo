@@ -1,0 +1,220 @@
+{
+  "main": {
+    "id": "434eb96ad148b365",
+    "type": "split",
+    "children": [
+      {
+        "id": "eb030623a472a93b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ca8b776189029bd4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "notebooks/embedded/C语言.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "C语言"
+            }
+          }
+        ],
+        "stacked": true
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0b2b40e538ad45f5",
+    "type": "split",
+    "children": [
+      {
+        "id": "60b7c5aac68fd9a0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "69a091d1b29ae7b6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "2695dbcf8143310e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "4dc269a199e1ea64",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "78209c188f6cef39",
+    "type": "split",
+    "children": [
+      {
+        "id": "762aa1a786ff429d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4cbb098f39d51ebf",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "notebooks/embedded/C语言.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "C语言 的反向链接列表"
+            }
+          },
+          {
+            "id": "852fee4570620fa9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "欢迎.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "欢迎 的出链列表"
+            }
+          },
+          {
+            "id": "00746e5a13124d74",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "5889812f35eb4298",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
+            }
+          },
+          {
+            "id": "48f12c024f828b1d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "a62ecbcc471497b9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "notebooks/embedded/C语言.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "C语言 的大纲"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false
+    }
+  },
+  "active": "ca8b776189029bd4",
+  "lastOpenFiles": [
+    "notebooks/embedded/面试汇总.md",
+    "notebooks/embedded/assets/sizeofAndStrlen.png",
+    "notebooks/embedded/assets/defineEnum.png",
+    "notebooks/embedded/assets/defineSizeof.png",
+    "notebooks/embedded/assets/exampleEnum.png",
+    "notebooks/embedded/assets",
+    "未命名",
+    "notebooks/embedded/C语言.md",
+    "Pasted image 20260613152447.png",
+    "Pasted image 20260613152419.png",
+    "notebooks/embedded",
+    "notebooks",
+    "未命名 2.md",
+    "未命名 1.md",
+    "未命名.md",
+    "Notebooks/嵌入式面试资料.md",
+    "未命名.base",
+    "Notebooks",
+    "欢迎.md",
+    "创建链接.md"
+  ]
+}
