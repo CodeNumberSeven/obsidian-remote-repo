@@ -1,0 +1,9 @@
+# 忽略 Obsidian 工作区缓存（极其重要，否则会疯狂冲突）
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# 忽略回收站
+.trash/
+
+# 忽略 Mac 系统文件
+.DS_Store

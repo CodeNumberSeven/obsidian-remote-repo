@@ -31,5 +31,7 @@ size_t strlen(const char *string);
 ![[exampleEnum.png]]
 ## 三、`typedef`作用
 
+### 1. 功能
+为已有的类型定义新的别名，提高代码的可读性和可维护性
 ## 四、`static`作用
 
