@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notebooks/embedded/C语言.md",
+                "file": "notebooks/embedded/面试汇总.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C语言"
+              "title": "面试汇总"
             }
           }
         ],
@@ -197,6 +197,8 @@
   },
   "active": "ca8b776189029bd4",
   "lastOpenFiles": [
+    "notebooks/embedded/C语言基础.md",
+    "notebooks/embedded/C语言.md",
     "新建 文本文档.txt",
     "notebooks/embedded/面试汇总.md",
     "notebooks/embedded/assets/sizeofAndStrlen.png",
@@ -205,7 +207,6 @@
     "notebooks/embedded/assets/exampleEnum.png",
     "notebooks/embedded/assets",
     "未命名",
-    "notebooks/embedded/C语言.md",
     "Pasted image 20260613152447.png",
     "Pasted image 20260613152419.png",
     "notebooks/embedded",
