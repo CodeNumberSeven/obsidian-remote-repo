@@ -32,6 +32,36 @@ size_t strlen(const char *string);
 ## 三、`typedef`作用
 
 ### 1. 功能
-为已有的类型定义新的别名，提高代码的可读性和可维护性
+为已有的类型定义新的别名
+```c
+typedef unsigned int uint32_t;
+```
+### 2. 使用场景
+- 简化复杂类型声明，例如：结构体、指针、函数
+- 提高代码的可读性和可维护性
+- 方便跨平台的数据类型替换 `int32_t` `uint8_t`
+### 3. 注意
+- 完成`typedef`之后，并不会为新的别名分配内存空间，换言之则是并没有诞生新的变量类型
+- 不能在函数定义中使用`typedef`
+```c
+// ❌ 绝对非法的写法
+typedef int my_function(int a, int b) {  // <-- 试图在写函数实现的同时，用 typedef 把它定义成类型
+    return a + b;
+}
+
+// ✅ 完全合法的写法
+int main() {
+    // 这是在 "function body" 里，不是在 "function definition" 的签名上！
+    typedef unsigned long long ULL; 
+    ULL num = 10;
+    return 0;
+}
+```
 ## 四、`static`作用
 
+### 1. 作用有三
+- 修饰局部变量，局部变量只初始化一次，只在当前作用域可用，不能跨作用域使用
+- 修饰全局变量，全局变量只初始化一次，只在本文件内使用
+- 修饰函数，只能在本文件使用
+### 2. 注意
+被`static`修饰的变量的默认值为0
