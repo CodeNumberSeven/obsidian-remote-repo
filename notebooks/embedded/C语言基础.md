@@ -62,7 +62,66 @@ int main() {
 ### 1. 作用有三
 - 修饰局部变量，局部变量只初始化一次，只在当前作用域可用，不能跨作用域使用![[localVariable.png]]
 - 修饰全局变量，全局变量只初始化一次，只在本文件内使用
-
 - 修饰函数，只能在本文件使用
+```c
+
+// secret.c
+#include <stdio.h>
+
+// ================== 全局变量部分 ==================
+// 1. 普通全局变量：大家都能用
+int public_money = 10000;
+
+// 2. static 全局变量：【私房钱】，出了这个 secret.c 文件，谁也看不见
+static int private_money = 500;
+
+// ================== 函数部分 ==================
+// 3. static 函数：【内部辅助工具】，只能在这个文件里被其他函数调用
+static void secret_process() {
+    printf("执行机密操作，使用了私房钱: %d\n", private_money);
+}
+
+// 4. 普通函数：对外暴露的接口
+void do_work() {
+    printf("开始对外工作...\n");
+    secret_process(); // 同一个文件内，调用 static 函数完全没问题
+}
+
+// main.c
+#include <stdio.h>
+// 声明外部变量和函数
+extern int public_money;
+extern void do_work();
+
+// 试图强行声明外部的 static 东西 (实际上这是徒劳的)
+extern int private_money;
+extern void secret_process();
+
+int main() {
+
+    // ✅ 成功：访问普通全局变量
+    printf("拿到公款: %d\n", public_money);
+    // ✅ 成功：调用普通全局函数
+    do_work();
+  
+    // ❌ 报错：试图访问 static 全局变量
+    // 如果你取消下面这行的注释，编译时链接器会报错：undefined reference to `private_money'
+    // printf("试图偷拿私房钱: %d\n", private_money);
+
+    // ❌ 报错：试图调用 static 函数
+    // 如果你取消下面这行的注释，编译时链接器会报错：undefined reference to `secret_process'
+    // secret_process();
+    return 0;
+}
+
+// output
+拿到公款: 10000
+开始对外工作...
+执行机密操作，使用了私房钱: 500
+```
 ### 2. 注意
 被`static`修饰的变量的默认值为0
+## 五、内联函数概念及作用
+
+
+## 六、数组名和指针区别
