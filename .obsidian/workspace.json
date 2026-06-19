@@ -102,7 +102,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "78209c188f6cef39",
@@ -208,7 +208,7 @@
       "obsidian-git:Open Git source control": true
     }
   },
-  "active": "b84cbb047c2f125e",
+  "active": "69a091d1b29ae7b6",
   "lastOpenFiles": [
     "notebooks/embedded/面试汇总.md",
     "notebooks/theories/circuit.md",

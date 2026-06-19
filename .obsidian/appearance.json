@@ -1,4 +1,5 @@
 {
   "theme": "obsidian",
-  "showViewHeader": true
+  "showViewHeader": true,
+  "cssTheme": "Obsidian Nord"
 }
