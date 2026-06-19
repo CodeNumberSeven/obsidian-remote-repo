@@ -89,13 +89,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "notebooks/embedded/C语言基础.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "C语言基础 的大纲"
+              "title": "大纲"
             }
           }
         ]
@@ -208,7 +207,7 @@
       "obsidian-git:Open Git source control": true
     }
   },
-  "active": "ca8b776189029bd4",
+  "active": "5889812f35eb4298",
   "lastOpenFiles": [
     "notebooks/embedded/C语言基础.md",
     "notebooks/embedded/assets/localVariable.png",
