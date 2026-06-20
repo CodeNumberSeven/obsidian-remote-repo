@@ -9,9 +9,9 @@
 		{"id":"360544ac2b837399","type":"text","text":"Linux驱动","x":10,"y":580,"width":129,"height":50},
 		{"id":"2e2007c622625c82","type":"text","text":"freeRTOS","x":10,"y":300,"width":120,"height":50},
 		{"id":"09ec0b64aabb90b6","type":"text","text":"QT","x":10,"y":440,"width":95,"height":50},
-		{"id":"cfa7a43759b9a864","type":"file","file":"notebooks/theories/1. circuit.md","x":305,"y":-620,"width":560,"height":137},
-		{"id":"332111952d8e568c","type":"file","file":"notebooks/theories/2. analog electronics.md","x":305,"y":-425,"width":560,"height":130},
-		{"id":"dbfd570f30553476","x":305,"y":-240,"width":560,"height":126,"type":"file","file":"notebooks/theories/3. digital electronics.md"},
+		{"id":"cfa7a43759b9a864","type":"file","file":"notebooks/theories/circuit.md","x":305,"y":-620,"width":560,"height":137},
+		{"id":"332111952d8e568c","type":"file","file":"notebooks/theories/analog electronics.md","x":305,"y":-425,"width":560,"height":130},
+		{"id":"dbfd570f30553476","x":305,"y":-240,"width":560,"height":126,"type":"file","file":"notebooks/theories/digital electronics.md"},
 		{"id":"b6be80d6e05e049f","type":"text","text":"电路基础","x":17,"y":-450,"width":123,"height":50},
 		{"id":"a3920e18a4c4b102","type":"text","text":"模电数电","x":17,"y":-290,"width":115,"height":50}
 	],

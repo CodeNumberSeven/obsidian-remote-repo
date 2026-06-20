@@ -3,5 +3,9 @@
   "alwaysUpdateLinks": true,
   "vimMode": false,
   "attachmentFolderPath": "./assets",
-  "showInlineTitle": false
+  "showInlineTitle": false,
+  "userIgnoreFilters": [
+    ".vitepress",
+    "node_modules"
+  ]
 }
