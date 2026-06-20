@@ -1,0 +1,33 @@
+{
+	"nodes":[
+		{"id":"ec2df6b98750dc99","type":"text","text":"嵌入式学习路径","x":-220,"y":-27,"width":160,"height":50},
+		{"id":"8bdf1b6f13d7fd04","type":"text","text":"C语言基础","x":20,"y":-27,"width":120,"height":50},
+		{"id":"8e101f11ba92e845","type":"file","file":"notebooks/embedded/C语言基础.md","x":300,"y":-74,"width":565,"height":145},
+		{"id":"a9da16890728c8a9","type":"text","text":"STC89C51/52","x":305,"y":95,"width":148,"height":50},
+		{"id":"2532272f96c2551c","type":"text","text":"单片机相关","x":10,"y":145,"width":140,"height":50},
+		{"id":"69b067fab3d9b6f3","type":"text","text":"STM32","x":305,"y":195,"width":100,"height":50},
+		{"id":"360544ac2b837399","type":"text","text":"Linux驱动","x":10,"y":580,"width":129,"height":50},
+		{"id":"2e2007c622625c82","type":"text","text":"freeRTOS","x":10,"y":300,"width":120,"height":50},
+		{"id":"09ec0b64aabb90b6","type":"text","text":"QT","x":10,"y":440,"width":95,"height":50},
+		{"id":"cfa7a43759b9a864","type":"file","file":"notebooks/theories/1. circuit.md","x":305,"y":-620,"width":560,"height":137},
+		{"id":"332111952d8e568c","type":"file","file":"notebooks/theories/2. analog electronics.md","x":305,"y":-425,"width":560,"height":130},
+		{"id":"dbfd570f30553476","x":305,"y":-240,"width":560,"height":126,"type":"file","file":"notebooks/theories/3. digital electronics.md"},
+		{"id":"b6be80d6e05e049f","type":"text","text":"电路基础","x":17,"y":-450,"width":123,"height":50},
+		{"id":"a3920e18a4c4b102","type":"text","text":"模电数电","x":17,"y":-290,"width":115,"height":50}
+	],
+	"edges":[
+		{"id":"9a4c032c2dcf27ce","fromNode":"ec2df6b98750dc99","fromSide":"right","toNode":"8bdf1b6f13d7fd04","toSide":"left"},
+		{"id":"5379d2d746df5302","fromNode":"8bdf1b6f13d7fd04","fromSide":"right","toNode":"8e101f11ba92e845","toSide":"left"},
+		{"id":"5ffdd1a85b158213","fromNode":"2532272f96c2551c","fromSide":"right","toNode":"a9da16890728c8a9","toSide":"left"},
+		{"id":"d2bc399dda1d18e7","fromNode":"2532272f96c2551c","fromSide":"right","toNode":"69b067fab3d9b6f3","toSide":"left"},
+		{"id":"d7c667c20beb1bae","fromNode":"ec2df6b98750dc99","fromSide":"right","toNode":"a3920e18a4c4b102","toSide":"left"},
+		{"id":"dc57f3ead0c9252d","fromNode":"ec2df6b98750dc99","fromSide":"right","toNode":"b6be80d6e05e049f","toSide":"left"},
+		{"id":"fdbc543145a55453","fromNode":"b6be80d6e05e049f","fromSide":"right","toNode":"cfa7a43759b9a864","toSide":"left"},
+		{"id":"41d7d36309feaedb","fromNode":"ec2df6b98750dc99","fromSide":"right","toNode":"2532272f96c2551c","toSide":"left"},
+		{"id":"255ff654a55426ae","fromNode":"ec2df6b98750dc99","fromSide":"right","toNode":"2e2007c622625c82","toSide":"left"},
+		{"id":"00771067b45f30e2","fromNode":"ec2df6b98750dc99","fromSide":"right","toNode":"09ec0b64aabb90b6","toSide":"left"},
+		{"id":"790d7e54ee31edf0","fromNode":"ec2df6b98750dc99","fromSide":"right","toNode":"360544ac2b837399","toSide":"left"},
+		{"id":"c09faa785274f953","fromNode":"a3920e18a4c4b102","fromSide":"right","toNode":"332111952d8e568c","toSide":"left"},
+		{"id":"c12bc7f3ff91408f","fromNode":"a3920e18a4c4b102","fromSide":"right","toNode":"dbfd570f30553476","toSide":"left"}
+	]
+}
