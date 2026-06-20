@@ -1,0 +1,7 @@
+/* 彻底在左侧边栏隐藏 node_modules 和 .vitepress 文件夹 */
+.nav-folder-title[data-path="node_modules"],
+.nav-folder-title[data-path="node_modules"] + .nav-folder-children,
+.nav-folder-title[data-path=".vitepress"],
+.nav-folder-title[data-path=".vitepress"] + .nav-folder-children {
+    display: none !important;
+}

@@ -1,5 +1,8 @@
 {
   "theme": "obsidian",
   "showViewHeader": true,
-  "cssTheme": "Obsidian Nord"
+  "cssTheme": "Obsidian Nord",
+  "enabledCssSnippets": [
+    "hide-folders"
+  ]
 }

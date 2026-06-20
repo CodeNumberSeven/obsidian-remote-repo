@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { BiDirectionalLinks } from '@nolebase/markdown-it-bi-directional-links'
+import { fileURLToPath, URL } from 'node:url'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -26,6 +27,15 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ]
   },
+
+  // Vite 配置：添加别名支持，确保安全解析本地组件路径
+  vite: {
+    resolve: {
+      alias: {
+        '@theme': fileURLToPath(new URL('./theme', import.meta.url))
+      }
+    }
+  },
   
   markdown: {
     config: (md) => {
@@ -36,7 +46,3 @@ export default defineConfig({
     }
   }
 })
-
-
-
-  
