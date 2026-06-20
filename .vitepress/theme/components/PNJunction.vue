@@ -1,9 +1,18 @@
 <template>
   <div class="component-container">
-    <canvas ref="canvasRef" :width="width" :height="height" class="component-canvas"></canvas>
+    <div class="canvas-wrapper">
+      <canvas ref="canvasRef" :width="width" :height="height" class="component-canvas"></canvas>
+    </div>
+    
     <div class="component-controls">
+      <div class="legend">
+        <span class="legend-item"><span class="dot hole"></span> 空穴 (Holes)</span>
+        <span class="legend-item"><span class="dot electron"></span> 电子 (Electrons)</span>
+        <span class="legend-item"><span class="dot ion"></span> 固定离子 (Fixed Ions)</span>
+      </div>
+      
       <label class="component-label">
-        外加电压 (External Voltage): {{ voltage.toFixed(1) }}V
+        外加电压 (External Voltage): <span class="voltage-val">{{ voltage.toFixed(1) }}V</span>
       </label>
       <input
         type="range"
@@ -20,23 +29,21 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue';
 
-const width = 600;
-const height = 400;
+const width = 700;
+const height = 350;
 const canvasRef = ref(null);
-const voltage = ref(0); // 初始电压 0V
-const minVoltage = -5;  // 反向偏置
-const maxVoltage = 1;   // 正向偏置
+const voltage = ref(0);
+const minVoltage = -5;
+const maxVoltage = 1;
 
 let ctx = null;
 let animationId = null;
 
-const initP = 300;
-const initN = 300;
-const initDepletion = 60;
-const builtInFieldDirection = -1; // 从 N 到 P
+const initDepletion = 80;
+const builtInFieldDirection = -1;
 
 const particles = [];
-const numParticles = 100;
+const numParticles = 120;
 
 class Particle {
   constructor(x, y, vx, vy, type) {
@@ -44,9 +51,8 @@ class Particle {
     this.y = y;
     this.vx = vx;
     this.vy = vy;
-    this.type = type; // 'hole' or 'electron'
+    this.type = type;
   }
-
   update() {
     this.x += this.vx;
     this.y += this.vy;
@@ -58,8 +64,8 @@ class Particle {
 const initializeParticles = () => {
   particles.length = 0;
   for (let i = 0; i < numParticles / 2; i++) {
-    particles.push(new Particle(Math.random() * 200 + 50, Math.random() * 300 + 50, Math.random() - 0.5, Math.random() - 0.5, 'hole'));
-    particles.push(new Particle(Math.random() * 200 + 350, Math.random() * 300 + 50, Math.random() - 0.5, Math.random() - 0.5, 'electron'));
+    particles.push(new Particle(Math.random() * 250 + 20, Math.random() * 250 + 20, (Math.random() - 0.5) * 1.5, (Math.random() - 0.5) * 1.5, 'hole'));
+    particles.push(new Particle(Math.random() * 250 + 430, Math.random() * 250 + 20, (Math.random() - 0.5) * 1.5, (Math.random() - 0.5) * 1.5, 'electron'));
   }
 };
 
@@ -72,98 +78,98 @@ const draw = () => {
 
   particles.forEach(p => p.update());
 
-  // 1. Draw P-Type (Left) and N-Type (Right) base
-  ctx.fillStyle = '#f0f0f0';
-  ctx.fillRect(0, 0, width / 2, height);
-  ctx.fillStyle = '#e0e0e0';
-  ctx.fillRect(width / 2, 0, width / 2, height);
+  // 1. Backgrounds
+  ctx.fillStyle = '#E8F0FE'; // P区 浅蓝
+  ctx.fillRect(0, 0, width / 2, height - 70);
+  ctx.fillStyle = '#FCE8E6'; // N区 浅红
+  ctx.fillRect(width / 2, 0, width / 2, height - 70);
 
   // 2. Depletion region
   const rawWd = initDepletion / (1 + appliedField * builtInFieldDirection);
-  const currentWd = Math.max(10, Math.min(width / 2 - 20, rawWd));
-
+  const currentWd = Math.max(20, Math.min(width / 2 - 40, rawWd));
   const pXStart = width / 2 - currentWd / 2;
-  const nXStart = width / 2;
 
-  ctx.fillStyle = '#dcdcdc'; // Depletion area base
-  ctx.fillRect(pXStart, 0, currentWd, height);
+  ctx.fillStyle = '#F1F3F4'; // 耗尽层 灰色
+  ctx.fillRect(pXStart, 0, currentWd, height - 70);
 
-  // 3. Render carriers within base and depletion
+  // Center dashed line
+  ctx.beginPath();
+  ctx.setLineDash([5, 5]);
+  ctx.moveTo(width / 2, 0);
+  ctx.lineTo(width / 2, height - 70);
+  ctx.strokeStyle = '#9AA0A6';
+  ctx.stroke();
+  ctx.setLineDash([]); // reset
+
+  // 3. Render carriers
   particles.forEach(p => {
-    let isInPBase = p.x < pXStart;
-    let isInNBase = p.x > nXStart + currentWd / 2; // Approximate N boundary
-    let isInDepletion = p.x >= pXStart && p.x <= nXStart + currentWd / 2;
-
-    if (p.type === 'hole') {
-      ctx.fillStyle = isInPBase ? '#ffcccc' : (isInDepletion ? '#ffaaaa' : '#ffeeee');
-    } else {
-      ctx.fillStyle = isInNBase ? '#ccccff' : (isInDepletion ? '#aaaaff' : '#eeeeff');
-    }
-
     ctx.beginPath();
-    ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+    ctx.arc(p.x, p.y, 5, 0, Math.PI * 2);
+    ctx.fillStyle = '#fff';
     ctx.fill();
+    ctx.strokeStyle = p.type === 'hole' ? '#4285F4' : '#EA4335';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
 
-    ctx.fillStyle = p.type === 'hole' ? '#f00' : '#00f';
-    ctx.font = '10px Arial';
+    ctx.fillStyle = p.type === 'hole' ? '#4285F4' : '#EA4335';
+    ctx.font = 'bold 10px Arial';
     ctx.fillText(p.type === 'hole' ? '+' : '-', p.x - 3, p.y + 3);
-  }
-  );
+  });
 
-  // 4. Fixed Ions (Only in depletion region)
+  // 4. Fixed Ions
   const drawIon = (x, y, type) => {
-    ctx.fillStyle = type === 'p' ? '#333' : '#fff';
+    ctx.fillStyle = '#DADCE0';
     ctx.beginPath();
-    ctx.arc(x, y, 6, 0, Math.PI * 2);
+    ctx.arc(x, y, 7, 0, Math.PI * 2);
     ctx.fill();
-    ctx.fillStyle = type === 'p' ? '#fff' : '#333';
+    ctx.strokeStyle = '#9AA0A6';
+    ctx.stroke();
+    
+    ctx.fillStyle = '#5F6368';
     ctx.font = 'bold 12px Arial';
-    ctx.fillText(type === 'p' ? '+' : '-', x - 4, y + 4);
+    ctx.fillText(type === 'p' ? '－' : '＋', x - 6, y + 4);
   };
 
-  const ionCols = Math.max(1, Math.round(currentWd / 20));
+  const ionCols = Math.max(1, Math.round(currentWd / 25));
   for (let c = 0; c < ionCols; c++) {
-    for (let r = 0; r < 6; r++) {
-      drawIon(pXStart + (c + 0.5) * currentWd / ionCols / 2, height * (r + 0.5) / 6, 'p');
-      drawIon(width / 2 + (c + 0.5) * currentWd / ionCols / 2, height * (r + 0.5) / 6, 'n');
+    for (let r = 0; r < 5; r++) {
+      drawIon(pXStart + (c + 0.5) * currentWd / ionCols / 2, (height - 70) * (r + 0.5) / 5, 'p');
+      drawIon(width / 2 + (c + 0.5) * currentWd / ionCols / 2, (height - 70) * (r + 0.5) / 5, 'n');
     }
   }
 
-  // 5. Electric Fields (Arrows on bottom)
-  const drawField = (label, direction, xOffset, magnitude) => {
-    const yStart = height - 40;
-    const arrowLen = Math.abs(magnitude * 200);
-    const headLen = 10;
-    const arrowColor = magnitude === 0 ? '#aaa' : '#fff';
-
-    ctx.fillStyle = '#fff';
-    ctx.font = 'bold 14px Arial';
-    ctx.fillText(label, xOffset, yStart - 10);
-
+  // 5. Electric Fields (Arrows)
+  const drawField = (label, direction, xOffset, yOffset, magnitude, color) => {
     if (magnitude === 0) return;
+    const arrowLen = Math.abs(magnitude * 250);
+    const headLen = 8;
+    
+    ctx.fillStyle = color;
+    ctx.font = 'bold 13px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(label, width / 2, yOffset - 8);
 
-    ctx.strokeStyle = arrowColor;
+    ctx.strokeStyle = color;
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(xOffset, yStart);
-    ctx.lineTo(xOffset + direction * arrowLen, yStart);
+    ctx.moveTo(xOffset - (direction * arrowLen)/2, yOffset);
+    ctx.lineTo(xOffset + (direction * arrowLen)/2, yOffset);
 
-    // Arrowhead
-    const targetX = xOffset + direction * arrowLen;
-    ctx.lineTo(targetX - direction * headLen, yStart - headLen / 2);
-    ctx.moveTo(targetX, yStart);
-    ctx.lineTo(targetX - direction * headLen, yStart + headLen / 2);
+    const targetX = xOffset + (direction * arrowLen)/2;
+    ctx.lineTo(targetX - direction * headLen, yOffset - headLen);
+    ctx.moveTo(targetX, yOffset);
+    ctx.lineTo(targetX - direction * headLen, yOffset + headLen);
     ctx.stroke();
   };
 
-  // Fixed Built-in Field
-  drawField('内建电场 (Built-in Field)', builtInFieldDirection, width - 150, 0.5);
-
-  // Dynamic Applied Field
+  // 分离内外电场的垂直位置，避免重叠
+  drawField('内建电场 (Built-in)', builtInFieldDirection, width / 2, height - 40, 0.4, '#0F9D58');
+  
   if (voltage.value !== 0) {
     const appDir = -builtInFieldDirection;
-    const appLabel = `外加电场: ${voltage.value > 0 ? '正向 (Opposes)' : '反向 (Strengthens)'}`;
-    drawField(appLabel, appDir, width / 2, appliedField);
+    const isForward = voltage.value > 0;
+    const appLabel = `外加电场: ${isForward ? '正向削弱' : '反向增强'}`;
+    drawField(appLabel, appDir, width / 2, height - 10, appliedField, isForward ? '#EA4335' : '#4285F4');
   }
 
   animationId = requestAnimationFrame(draw);
@@ -179,10 +185,7 @@ onUnmounted(() => {
   if (animationId) cancelAnimationFrame(animationId);
 });
 
-watch(voltage, () => {
-  initializeParticles(); // Reset carriers on voltage change for clarity
-}
-);
+watch(voltage, () => { initializeParticles(); });
 </script>
 
 <style scoped>
@@ -190,28 +193,69 @@ watch(voltage, () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin: 20px 0;
+}
+
+.canvas-wrapper {
+  border: 1px solid #5F6368;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .component-canvas {
   max-width: 100%;
+  display: block;
 }
 
 .component-controls {
-  margin-top: 20px;
+  margin-top: 24px;
+  width: 100%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 400px;
+  gap: 16px;
 }
 
+.legend {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  color: #5F6368;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+}
+.dot.hole { background: #fff; border-color: #4285F4; }
+.dot.electron { background: #fff; border-color: #EA4335; }
+.dot.ion { background: #DADCE0; border-color: #9AA0A6; }
+
 .component-label {
-  margin-bottom: 10px;
-  font-weight: bold;
+  font-weight: 600;
+  color: #202124;
+}
+
+.voltage-val {
+  color: #1A73E8;
 }
 
 .component-slider {
   width: 100%;
+  accent-color: #1A73E8;
 }
 </style>
